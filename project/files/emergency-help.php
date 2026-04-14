@@ -1,4 +1,9 @@
-
+<?php
+require __DIR__ . '/includes/data.php';
+$pageTitle = 'Emergency Help';
+$activePage = 'emergency';
+require __DIR__ . '/includes/header.php';
+?>
 <section class="page-hero">
   <div class="page-hero-card">
     <div class="kicker">Urgent Response</div>
@@ -37,3 +42,4 @@
     </div>
   </div>
 </section>
+<?php require __DIR__ . '/includes/footer.php'; ?>
