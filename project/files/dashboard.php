@@ -1,4 +1,10 @@
-
+<?php
+require __DIR__ . '/includes/data.php';
+$pageTitle = 'Donor Dashboard';
+$activePage = 'dashboard';
+$updated = $_SERVER['REQUEST_METHOD'] === 'POST';
+require __DIR__ . '/includes/header.php';
+?>
 <section class="page-hero">
   <div class="page-hero-card">
     <div class="kicker">User Dashboard</div>
@@ -37,7 +43,7 @@
       <article class="dashboard-panel">
         <div class="kicker">Recent Matches</div>
         <h3>Preview of donor activity cards</h3>
-        <p class="body-copy">Delhi Governments Hospital requested O+ blood, 2 units, needed today.<br><br>Lalitpur Trauma Center requested donor standby for tomorrow morning.</p>
+        <p class="body-copy">Delhi Govenrments Hospital requested O+ blood, 2 units, needed today.<br><br>Lalitpur Trauma Center requested donor standby for tomorrow morning.</p>
       </article>
     </div>
   </div>
