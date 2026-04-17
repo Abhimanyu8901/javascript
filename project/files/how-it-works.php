@@ -19,4 +19,38 @@ require __DIR__ . '/includes/header.php';
     <article class="card"><div class="kicker">03</div><h3>Keep everyone updated</h3><p>Donors maintain profiles and notification preferences, while hospitals and families receive timely communication.</p></article>
   </div>
 </section>
+<section class="section">
+  <div class="steps-grid">
+    <article class="step-card">
+      <div class="step-index">1</div>
+      <h3>Open the request or donor flow</h3>
+      <p>Users choose whether they need blood now or want to join the donor network.</p>
+    </article>
+    <article class="step-card">
+      <div class="step-index">2</div>
+      <h3>Share the right details</h3>
+      <p>Patient data, blood group, hospital, city, donor availability, and contact preference are captured clearly.</p>
+    </article>
+    <article class="step-card">
+      <div class="step-index">3</div>
+      <h3>Review matching results</h3>
+      <p>Volunteers can search by city, blood group, and availability to narrow potential donor matches.</p>
+    </article>
+    <article class="step-card">
+      <div class="step-index">4</div>
+      <h3>Use emergency support if needed</h3>
+      <p>Critical situations route users to visible support information and emergency instructions.</p>
+    </article>
+    <article class="step-card">
+      <div class="step-index">5</div>
+      <h3>Manage donor settings</h3>
+      <p>Dashboard controls let donors update profile details, availability, and notification preferences.</p>
+    </article>
+    <article class="step-card">
+      <div class="step-index">6</div>
+      <h3>Connect notifications later</h3>
+      <p>The frontend already has places for email, SMS, and WhatsApp alert preferences when backend support is added.</p>
+    </article>
+  </div>
+</section>
 <?php require __DIR__ . '/includes/footer.php'; ?>

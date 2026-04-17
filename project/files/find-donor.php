@@ -5,6 +5,10 @@ $activePage = 'find';
 $requestSubmitted = $_SERVER['REQUEST_METHOD'] === 'POST';
 require __DIR__ . '/includes/header.php';
 ?>
+$searchCity = trim((string) ($_GET['city'] ?? ''));
+$searchGroup = trim((string) ($_GET['blood_group'] ?? ''));
+$searchAvailability = trim((string) ($_GET['availability'] ?? ''));
+$searchContact = trim((string) ($_GET['contact_preference'] ?? ''));
 <section class="page-hero">
   <div class="page-hero-card">
     <div class="kicker">Search and request in one place</div>
@@ -72,5 +76,23 @@ require __DIR__ . '/includes/header.php';
       </form>
     </div>
   </div>
+  <div class="info-stack">
+      <article class="info-card">
+        <h3>Before you submit</h3>
+        <ul class="list-clean">
+          <li>Confirm the exact blood group with the treating facility.</li>
+          <li>Keep hospital name, patient name, and urgency details ready.</li>
+          <li>Use emergency help if the requirement is immediate.</li>
+        </ul>
+      </article>
+      <article class="info-card">
+        <h3>Search filters included</h3>
+        <p>City, blood group, donor availability, and contact preference are all part of the backend search now.</p>
+      </article>
+      <article class="info-card">
+        <h3>Notifications later</h3>
+        <p>This search and request flow is structured so staff alerts can be connected later.</p>
+      </article>
+    </div>
 </section>
 <?php require __DIR__ . '/includes/footer.php'; ?>

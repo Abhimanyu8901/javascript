@@ -11,13 +11,26 @@
         </div>
       </div>
       <div>
-        <h3>Quick Links</h3>
-        <ul class="footer-links">
-          <?php foreach ($quickLinks as $link): ?>
-            <li><a href="<?php echo htmlspecialchars($link['href']); ?>"><?php echo htmlspecialchars($link['label']); ?></a></li>
-          <?php endforeach; ?>
-        </ul>
-      </div>
+          <h3>Emergency & Trust</h3>
+          <ul class="footer-links">
+            <li><a href="emergency-help.php">Emergency Help</a></li>
+            <li><a href="donor-dashboard.php">Donor Dashboard</a></li>
+            <li><a href="privacy-policy.php">Privacy Policy</a></li>
+            <li><a href="terms.php">Terms of Service</a></li>
+            <li><a href="safety-guidelines.php">Safety Guidelines</a></li>
+            <li><a href="contact.php">Partner With Us</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3>Contact</h3>
+          <ul class="footer-links footer-contact">
+            <li>Blood Saathi Coordination Desk</li>
+            <li>New Delhi, India</li>
+            <li>support@bloodsaathi.org</li>
+            <li>+91 98765 43210</li>
+            <li>Mon-Sun, 24/7 response desk</li>
+          </ul>
       <div>
         <h3>Emergency Contact</h3>
         <ul class="footer-links">
@@ -28,14 +41,16 @@
         </ul>
       </div>
       <div>
-        <h3>Policies</h3>
-        <ul class="footer-links">
-          <li><a href="privacy.php">Privacy Policy</a></li>
-          <li><a href="terms.php">Terms of Service</a></li>
-          <li><a href="safety.php">Safety Guidelines</a></li>
-        </ul>
-      </div>
-    </div>
+          <h3>Quick Links</h3>
+          <ul class="footer-links">
+            <li><a href="about.php">About Us</a></li>
+            <li><a href="find-blood.php">Find Donor / Request Blood</a></li>
+            <li><a href="become-donor.php">Become a Donor</a></li>
+            <li><a href="blood-groups.php">Blood Groups</a></li>
+            <li><a href="how-it-works.php">How It Works</a></li>
+            <li><a href="faq.php">FAQs</a></li>
+          </ul>
+</div>
     <div class="footer-bottom">
       <span>&copy; <?php echo date('Y'); ?> <?php echo htmlspecialchars($siteName); ?>. All rights reserved.</span>
     </div>

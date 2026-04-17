@@ -2,14 +2,13 @@
 require __DIR__ . '/includes/data.php';
 $pageTitle = 'Donor Dashboard';
 $activePage = 'dashboard';
-$updated = $_SERVER['REQUEST_METHOD'] === 'POST';
 require __DIR__ . '/includes/header.php';
 ?>
+
 <section class="page-hero">
   <div class="page-hero-card">
     <div class="kicker">User Dashboard</div>
     <h1 class="page-title">A donor can review profile details, update availability, and manage <span class="red">urgent notifications</span>.</h1>
-    <p class="page-lead">This is still frontend-only, but it demonstrates the product direction clearly and gives your project a stronger sense of completeness.</p>
   </div>
 </section>
 
@@ -24,7 +23,7 @@ require __DIR__ . '/includes/header.php';
       <form method="post" class="form-grid">
         <div><label for="dashboard-name">Full Name</label><input id="dashboard-name" type="text" value="Aarav Shrestha" /></div>
         <div><label for="dashboard-group">Blood Group</label><select id="dashboard-group"><option>O+</option><option>A+</option><option>B+</option><option>AB+</option></select></div>
-        <div><label for="dashboard-city">City</label><input id="dashboard-city" type="text" value="Kathmandu" /></div>
+        <div><label for="dashboard-city">City</label><input id="dashboard-city" type="text" value="Delhi" /></div>
         <div><label for="dashboard-availability">Availability</label><select id="dashboard-availability"><option>Available today</option><option>On standby</option><option>Available tomorrow</option><option>Temporarily unavailable</option></select></div>
         <div class="form-row-full"><label for="dashboard-pref">Contact Preference</label><select id="dashboard-pref"><option>WhatsApp preferred</option><option>Phone call</option><option>SMS</option><option>Email</option></select></div>
         <div class="form-row-full"><button class="button" type="submit">Update Frontend Profile</button></div>
@@ -39,6 +38,18 @@ require __DIR__ . '/includes/header.php';
           <div class="tag-row"><span class="tag strong">SMS</span><span class="meta">Enabled for urgent same-day requests</span></div>
           <div class="tag-row"><span class="tag strong">WhatsApp</span><span class="meta">Primary channel for immediate coordination</span></div>
         </div>
+        
+    <div class="dashboard-card">
+      <p class="eyebrow">Account snapshot</p>
+      <h3>Availability and request summary</h3>
+      <ul class="list-clean">
+        <li>Signed in as: <?php echo e($user['email']); ?></li>
+        <li>Donor status: <?php echo e($donor['status']); ?></li>
+        <li>Verification: <?php echo (int) $donor['is_verified'] === 1 ? 'Verified profile' : 'Awaiting verification'; ?></li>
+        <li>Open requests in the system: <?php echo e((string) ($openRequestCount['total'] ?? '0')); ?></li>
+      </ul>
+    </div>
+  </div>
       </article>
       <article class="dashboard-panel">
         <div class="kicker">Recent Matches</div>

@@ -13,16 +13,23 @@ require __DIR__ . '/includes/header.php';
 </section>
 
 <section class="section">
-  <div class="section-inner">
-    <div class="groups-grid">
-      <?php foreach ($bloodGroups as $group): ?>
-        <article class="card">
-          <span class="stat-number" style="font-size:2.2rem;"><?php echo htmlspecialchars($group['type']); ?></span>
-          <p><strong>Can donate to:</strong><br><?php echo htmlspecialchars($group['canDonateTo']); ?></p>
-          <p><strong>Can receive from:</strong><br><?php echo htmlspecialchars($group['canReceiveFrom']); ?></p>
-        </article>
-      <?php endforeach; ?>
-    </div>
+  <div class="card-grid four">
+    <article class="card">
+      <h3>A Group</h3>
+      <p>A+ and A- requests should clearly explain donor compatibility and urgency level on the request screen.</p>
+    </article>
+    <article class="card">
+      <h3>B Group</h3>
+      <p>B+ and B- are common in request flows and should remain easy to select in both donor and patient forms.</p>
+    </article>
+    <article class="card">
+      <h3>AB Group</h3>
+      <p>AB groups often need extra clarity in compatibility guidance for families unfamiliar with donation terminology.</p>
+    </article>
+    <article class="card">
+      <h3>O Group</h3>
+      <p>O group pages should highlight urgency and why O-negative requests often need fast coordination.</p>
+    </article>
   </div>
 </section>
 <?php require __DIR__ . '/includes/footer.php'; ?>
