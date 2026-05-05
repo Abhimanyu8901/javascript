@@ -7,14 +7,12 @@ if (is_logged_in()) {
 $page_title = 'Portal Login | Blood Saathi';
 $page_description = 'Login page for donors and coordinators.';
 $active_page = 'login';
-$errors = [];
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && $pdo instanceof PDO) {
     $email = strtolower(post_value('email'));
     $password = (string) ($_POST['password'] ?? '');
 }
 include 'includes/header.php';
 ?>
-
 <section class="login-shell">
   <div class="login-layout">
     <div class="login-panel">

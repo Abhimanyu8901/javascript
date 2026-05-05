@@ -1,8 +1,68 @@
 <?php
-require __DIR__ . '/includes/data.php';
-$pageTitle = 'Blood Groups';
-$activePage = 'groups';
-require __DIR__ . '/includes/header.php';
+require_once __DIR__ . '/includes/bootstrap.php';
+
+$page_title = 'Find Donor';
+$page_description = 'MySQL-backed blood request page with donor search, filter controls, urgency handling, and request form submission.';
+$active_page = 'find-blood';
+
+$searchCity = trim((string) ($_GET['city'] ?? ''));
+$searchGroup = trim((string) ($_GET['blood_group'] ?? ''));
+$searchAvailability = trim((string) ($_GET['availability'] ?? ''));
+$searchContact = trim((string) ($_GET['contact_preference'] ?? ''));
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && $pdo instanceof PDO) {
+    $patientName = post_value('patient_name');
+    $bloodGroup = post_value('blood_group');
+    $requiredUnits = (int) ($_POST['required_units'] ?? 0);
+    $urgency = post_value('urgency');
+    $hospital = post_value('hospital');
+    $city = post_value('city');
+    $notes = post_value('notes');
+
+    if ($patientName === '' || $bloodGroup === '' || $requiredUnits < 1 || $urgency === '' || $hospital === '' || $city === '') {
+        $errors[] = 'Please complete all required blood request fields.';
+    }
+
+    if (!$errors) {
+        $statement = $pdo->prepare(
+            'INSERT INTO blood_requests (patient_name, blood_group, required_units, urgency, hospital, city, notes)
+             VALUES (:patient_name, :blood_group, :required_units, :urgency, :hospital, :city, :notes)'
+        );
+        $statement->execute([
+            'patient_name' => $patientName,
+            'blood_group' => $bloodGroup,
+            'required_units' => $requiredUnits,
+            'urgency' => $urgency,
+            'hospital' => $hospital,
+            'city' => $city,
+            'notes' => $notes !== '' ? $notes : null,
+        ]);
+
+        set_flash('success', 'Blood request saved successfully. You can now use the donor search to find matching profiles.');
+        redirect_to('find-blood.php');
+    }
+}
+$donorSql = 'SELECT * FROM donors WHERE 1=1';
+$donorParams = [];
+if ($searchCity !== '') {
+    $donorSql .= ' AND city LIKE :city';
+    $donorParams['city'] = '%' . $searchCity . '%';
+}
+if ($searchGroup !== '' && $searchGroup !== 'Any group') {
+    $donorSql .= ' AND blood_group = :blood_group';
+    $donorParams['blood_group'] = $searchGroup;
+}
+if ($searchAvailability !== '') {
+    $donorSql .= ' AND availability = :availability';
+    $donorParams['availability'] = $searchAvailability;
+}
+if ($searchContact !== '') {
+    $donorSql .= ' AND contact_preference = :contact_preference';
+    $donorParams['contact_preference'] = $searchContact;
+}
+$donorSql .= ' ORDER BY is_verified DESC, created_at DESC LIMIT 12';
+$donors = db_all($donorSql, $donorParams);
+include 'includes/header.php';
 ?>
 <section class="page-hero">
   <div class="page-hero-card">
